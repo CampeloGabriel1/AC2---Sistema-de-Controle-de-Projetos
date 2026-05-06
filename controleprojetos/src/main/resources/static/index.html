@@ -1,109 +1,126 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Controle de Projetos</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="page-shell">
-        <header class="hero">
-            <div>
-                <p class="eyebrow">Backend Spring Boot + H2</p>
-                <h1>Controle de Projetos</h1>
-                <p class="subtitle">Tela funcional para listar projetos, cadastrar projeto, setor e funcionário, e vincular funcionário ao projeto.</p>
-            </div>
-            <button class="ghost-button" type="button" onclick="recarregarTudo()">Atualizar tudo</button>
-        </header>
+      <header class="hero">
+        <div>
+          <h1>Controle de Projetos</h1>
+        </div>
+      </header>
 
-        <main class="dashboard">
-            <section class="panel panel-wide">
-                <div class="panel-header">
-                    <h2>Projetos cadastrados</h2>
-                    <button type="button" onclick="carregarProjetos()">Atualizar lista</button>
-                </div>
-                <div id="listaProjetos" class="cards-grid">
-                    <div class="empty-state">Carregando projetos...</div>
-                </div>
-            </section>
+      <main class="dashboard">
+        <section class="panel panel-wide">
+          <div class="panel-header">
+            <h2>Projetos cadastrados</h2>
+            <button type="button" onclick="carregarProjetos()">
+              Atualizar lista
+            </button>
+          </div>
+          <div id="listaProjetos" class="cards-grid">
+            <div class="empty-state">Carregando projetos...</div>
+          </div>
+        </section>
 
-            <section class="panel">
-                <div class="panel-header">
-                    <h2>Novo projeto</h2>
-                </div>
-                <form id="formProjeto" class="form-grid">
-                    <label>
-                        <span>Descrição</span>
-                        <input type="text" id="descricao" name="descricao" placeholder="Ex.: Sistema interno" required>
-                    </label>
-                    <label>
-                        <span>Data de início</span>
-                        <input type="date" id="dataInicio" name="dataInicio" required>
-                    </label>
-                    <label>
-                        <span>Data de fim</span>
-                        <input type="date" id="dataFim" name="dataFim" required>
-                    </label>
-                    <button type="submit">Adicionar projeto</button>
-                </form>
-                <div id="mensagemProjeto" class="feedback"></div>
-            </section>
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Novo projeto</h2>
+          </div>
+          <form id="formProjeto" class="form-grid">
+            <label>
+              <span>Descrição</span>
+              <input
+                type="text"
+                id="descricao"
+                name="descricao"
+                placeholder="Ex.: Sistema interno"
+                required
+              />
+            </label>
+            <label>
+              <span>Data de início</span>
+              <input type="date" id="dataInicio" name="dataInicio" required />
+            </label>
+            <label>
+              <span>Data de fim</span>
+              <input type="date" id="dataFim" name="dataFim" required />
+            </label>
+            <button type="submit">Adicionar projeto</button>
+          </form>
+          <div id="mensagemProjeto" class="feedback"></div>
+        </section>
 
-            <section class="panel">
-                <div class="panel-header">
-                    <h2>Vincular funcionário ao projeto</h2>
-                </div>
-                <form id="formVinculo" class="form-grid">
-                    <label>
-                        <span>Projeto</span>
-                        <select id="projetoVinculo" required></select>
-                    </label>
-                    <label>
-                        <span>Funcionário</span>
-                        <select id="funcionarioVinculo" required></select>
-                    </label>
-                    <button type="submit">Vincular</button>
-                </form>
-                <div id="mensagemVinculo" class="feedback"></div>
-            </section>
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Vincular funcionário ao projeto</h2>
+          </div>
+          <form id="formVinculo" class="form-grid">
+            <label>
+              <span>Projeto</span>
+              <select id="projetoVinculo" required></select>
+            </label>
+            <label>
+              <span>Funcionário</span>
+              <select id="funcionarioVinculo" required></select>
+            </label>
+            <button type="submit">Vincular</button>
+          </form>
+          <div id="mensagemVinculo" class="feedback"></div>
+        </section>
 
-            <section class="panel">
-                <div class="panel-header">
-                    <h2>Setores</h2>
-                </div>
-                <div class="split-actions">
-                    <form id="formSetor" class="inline-form">
-                        <input type="text" id="nomeSetor" placeholder="Nome do setor" required>
-                        <button type="submit">Adicionar setor</button>
-                    </form>
-                    <button type="button" onclick="carregarSetores()">Atualizar setores</button>
-                </div>
-                <div id="listaSetores" class="cards-grid compact-grid"></div>
-                <div id="mensagemSetor" class="feedback"></div>
-            </section>
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Setores</h2>
+          </div>
+          <div class="split-actions">
+            <form id="formSetor" class="inline-form">
+              <input
+                type="text"
+                id="nomeSetor"
+                placeholder="Nome do setor"
+                required
+              />
+              <button type="submit">Adicionar setor</button>
+            </form>
+            <button type="button" onclick="carregarSetores()">
+              Atualizar setores
+            </button>
+          </div>
+          <div id="listaSetores" class="cards-grid compact-grid"></div>
+          <div id="mensagemSetor" class="feedback"></div>
+        </section>
 
-            <section class="panel">
-                <div class="panel-header">
-                    <h2>Funcionários</h2>
-                </div>
-                <form id="formFuncionario" class="form-grid">
-                    <label>
-                        <span>Nome</span>
-                        <input type="text" id="nomeFuncionario" placeholder="Nome do funcionário" required>
-                    </label>
-                    <label>
-                        <span>Setor</span>
-                        <select id="setorFuncionario"></select>
-                    </label>
-                    <button type="submit">Adicionar funcionário</button>
-                </form>
-                <div id="listaFuncionarios" class="cards-grid compact-grid"></div>
-                <div id="mensagemFuncionario" class="feedback"></div>
-            </section>
-        </main>
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Funcionários</h2>
+          </div>
+          <form id="formFuncionario" class="form-grid">
+            <label>
+              <span>Nome</span>
+              <input
+                type="text"
+                id="nomeFuncionario"
+                placeholder="Nome do funcionário"
+                required
+              />
+            </label>
+            <label>
+              <span>Setor</span>
+              <select id="setorFuncionario"></select>
+            </label>
+            <button type="submit">Adicionar funcionário</button>
+          </form>
+          <div id="listaFuncionarios" class="cards-grid compact-grid"></div>
+          <div id="mensagemFuncionario" class="feedback"></div>
+        </section>
+      </main>
     </div>
 
     <script src="app.js"></script>
-</body>
+  </body>
 </html>
