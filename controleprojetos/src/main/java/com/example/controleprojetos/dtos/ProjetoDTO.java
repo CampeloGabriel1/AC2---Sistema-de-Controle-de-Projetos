@@ -1,4 +1,4 @@
-package com.example.controleprojetos.dto;
+package com.example.controleprojetos.dtos;
 
 import java.time.LocalDate;
 

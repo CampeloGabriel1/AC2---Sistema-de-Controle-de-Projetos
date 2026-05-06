@@ -3,8 +3,8 @@ package com.example.controleprojetos.controllers;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.controleprojetos.dto.DadosProjetoDTO;
-import com.example.controleprojetos.dto.ProjetoDTO;
+import com.example.controleprojetos.dtos.DadosProjetoDTO;
+import com.example.controleprojetos.dtos.ProjetoDTO;
 import com.example.controleprojetos.service.ProjetoService;
 
 import lombok.RequiredArgsConstructor;
